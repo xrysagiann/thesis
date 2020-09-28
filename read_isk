@@ -1,0 +1,30 @@
+import pandas as pd
+import numpy as np
+
+risks = ["AF", "AA", "Elec", "Fire", "Flood", "HD" , "Homi", "Leuk", "Ligh", "LC", "NA", "SC", "Stroke", "Terr" , "Torn", "TCS" , "TA", "War"]
+risks2 = pd.DataFrame(index= risks, columns=risks)
+    
+risks2['AF'] = [9, 2.4, 3.1, 4.6, 3.8, 2.5, 3.6, 2.9, 3.8, 2.5, 2.9, 1.8, 4.0, 2.3, 3.2, 3.1, 5.2, 2.5]
+risks2['AA'] = [np.nan, 9, 3.0 , 3.0, 4.2, 1.9, 3.1, 2.1, 4.2, 2.1, 3.5, 2.0, 2.3, 4.3, 3.4, 3.6, 5.3, 3.8]
+risks2['Elec'] = [np.nan, np.nan, 9, 7, 4.1, 2.4, 2.6, 2.1, 6.7, 1.7, 3.5, 2.1, 2.3, 3.0, 3.9, 3.3, 3.0, 2.9]
+risks2['Fire'] = [np.nan, np.nan, np.nan, 9, 3, 1.7, 3.9, 2.6, 6.2, 2.7, 3.5, 2.3, 2.8, 3.7, 4.6, 4.3 , 4.2, 3.9]
+risks2['Flood'] = [np.nan, np.nan, np.nan, np.nan, 9, 1.5, 4.7, 3.5, 6.7, 2.3, 3.5, 1.8, 2.1, 3.0, 7.7, 3.1, 2.8, 2.7]
+risks2['HD'] = [np.nan, np.nan, np.nan, np.nan, np.nan, 9 , 2.5, 5.6, 4.2, 3.1, 1.9, 5.9, 7.0, 1.8, 1.9, 2.4, 3.3, 2 ]
+risks2['Homi'] = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 9 , 2.3, 2, 2, 6, 1.8, 2.5, 6.2, 2.5, 3.2, 4.7, 7 ] 
+risks2['Leuk'] = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 9 , 1.9, 3.9, 3.1, 6.2, 5.2, 1.6, 2 , 3.3, 2.3, 2.6]
+risks2['Ligh'] = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,  9 , 2.2, 3.5, 2.9, 3.7, 3, 7.6, 3.5, 2.9, 3]
+risks2['LC'] = [np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 9 , 2 , 5.7, 5.9, 2.3, 1.4, 3, 3.3, 2.6]
+risks2['NA'] = [np.nan, np.nan,np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,9 ,  3.1, 1.7, 2.9, 3.7, 7.3,  3.2, 5.7]
+risks2['SC'] = [np.nan, np.nan, np.nan,np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 9 ,  2.9, 1.9,2.1, 3, 2.2,2.1]
+risks2['Stroke'] = [np.nan, np.nan, np.nan, np.nan,np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, 9 , 2.9, 5.1, 2.6, 4.3, 2.2]
+risks2['Terr'] = [np.nan, np.nan, np.nan, np.nan,np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,   9 , 2.9, 3.6, 2.9, 7.5]
+risks2['Torn'] = [np.nan, np.nan, np.nan, np.nan,np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,  np.nan,  9 , 4.5 , 2.5, 2.2]
+risks2['TCS'] = [np.nan, np.nan, np.nan, np.nan,np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,  np.nan, np.nan, 9 , 4.2, 2.2]
+risks2['TA'] = [np.nan, np.nan, np.nan, np.nan,np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,  np.nan, np.nan, np.nan,  9 , 3]
+risks2['War'] = [np.nan, np.nan, np.nan, np.nan,np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan, np.nan,  np.nan, np.nan, np.nan, np.nan, 9]
+
+data_risk = np.array(risks2)
+data_risk = np.nan_to_num(data_risk)
+data_risk = data_risk + data_risk.T - np.diag(data_risk.diagonal())
+data_risk = pd.DataFrame(data_risk, index = risks, columns = risks)
+
