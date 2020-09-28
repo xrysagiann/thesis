@@ -1,0 +1,20 @@
+import pandas as pd
+import numpy as np
+from scipy.io import loadmat
+
+data = loadmat('risks.mat')   #load data and create a dictionary of numpy arrays
+    
+headers = data.keys()
+
+s = data['s']          # s : nxn symmetric matrix of normalized pairwise similarities between the objects
+d = data['d']          # d : nxn symmetric matrix of normalized pairwise proximities between the objects
+labs = data['labs']    # labs : string array of labels for the objects
+n = data['n'][0][0]    # n : number of objects 
+if 'sigma_emp' in headers : 
+    sigma_emp = data['sigma_emp'][0][0] 
+ 
+new_labs = [item.replace(" ","") for item in list(labs)]       # the labels of data as list 
+sim = pd.DataFrame(s, columns = new_labs , index = new_labs)   # similarity matrix as dataframe
+dist = pd.DataFrame(d, columns = new_labs , index = new_labs)  # proximity matrix as dataframe
+
+sim_add_dist = sim.add(dist, fill_value=0)  # check if sim + dist == 1
