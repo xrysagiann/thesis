@@ -1,3 +1,14 @@
+# From the empirical data in Lee's file, the only one which was about semantic similarity and the similarity data was included in the paper. 
+
+
+# From research reported in Johnson, E. J., & Tversky, A. (1984). Representations of Perceptions of Risks. Journal of Experimental Psychology: General, 113(1), 55-70
+# Abstract : The perception of risks (e.g., diseases, accidents, natural hazards) is investigated
+# using a multi-task, multi-model approach. We studied the proximities among 18 risks induced by 
+# three tasks: judgment of similarity, conditional prediction and dimensional evaluation. 
+
+
+
+
 import pandas as pd
 import numpy as np
 
